@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Calliste DOUET</title>
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --accent-color: #ff9e58;
+            --dark-bg: #1f2a36;
+            --text-color: #333;
+            --light-bg: #f7f7f7;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff;
+            color: var(--text-color);
+            font-size: 15px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 28% 72%;
+            min-height: 100vh;
+        }
+        /* Sidebar */
+        .sidebar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 45px 28px;
+        }
+        .profile-img-placeholder {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 auto 25px;
+            border: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #444;
+        }
+        .sidebar h2 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #444;
+            padding-bottom: 6px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .skill-category {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Main */
+        .main-content {
+            padding: 50px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 40px;
+            text-transform: uppercase;
+            color: var(--dark-bg);
+        }
+        .header h2 {
+            margin-top: 5px;
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        p.leading-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 25px;
+        }
+        .section-title {
+            margin-top: 35px;
+            font-size: 20px;
+            color: var(--dark-bg);
+            text-transform: uppercase;
+            font-weight: bold;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 6px;
+            margin-bottom: 22px;
+        }
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .company {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .date {
+            color: #777;
+            font-size: 14px;
+        }
+        .job-desc ul {
+            margin: 6px 0 0;
+            padding-left: 22px;
+        }
+        .job-desc li {
+            margin-bottom: 5px;
+        }
+
+        @media print {
+            body { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <div class="profile-img-placeholder">Photo</div>
+
+        <h2>Contact</h2>
+        <div>📍 54 rue des Amandiers – 31270 FROUZINS</div>
+        <div>📞 06 88 38 73 17</div>
+        <div>📧 douetcalliste@gmail.com</div>
+		<div><a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank"> ➡️LinkedIn</a></div>
+
+        <h2>Compétences</h2>
+
+        <div class="skill-category">Administration & Systèmes</div>
+        <ul>
+            <li>Microsoft 365 (Intune, Compliance)</li>
+            <li>Gestion de parc (Clarilog)</li>
+            <li>Windows 10/11 & Windows Server</li>
+            <li>SQL – jQuery</li>
+        </ul>
+
+        <div class="skill-category">Réseaux</div>
+        <ul>
+            <li>Routeurs Mikrotik (Winbox)</li>
+            <li>Switching (Aruba), VLAN, Wifi</li>
+            <li>Téléphonie</li>
+        </ul>
+
+        <div class="skill-category">Logiciels & Création</div>
+        <ul>
+            <li>Jira – Confluence</li>
+            <li>Suite Adobe (Ps, Ai, Pr)</li>
+            <li>Fusion 360 – Blender</li>
+        </ul>
+
+        <h2>Langues</h2>
+        <ul>
+            <li>Anglais technique : Maîtrise</li>
+            <li>Anglais général : Intermédiaire</li>
+        </ul>
+
+        <h2>Savoir-être</h2>
+        <ul>
+            <li>Autonome – Autodidacte</li>
+            <li>Dynamique – Curieux</li>
+            <li>Sens du service</li>
+            <li>Coordination d'équipe</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Calliste DOUET</h1>
+            <h2>Technicien Systèmes & Réseaux – Support Informatique</h2>
+        </div>
+
+        <p class="leading-text">
+            Technicien polyvalent avec plus de 9 ans d'expérience en support, réseau et gestion de parc. Compétent en coordination d'équipe, déploiement d'infrastructures et administration Microsoft 365.
+        </p>
+
+        <div class="section-title">Expériences Professionnelles</div>
+
+        <div class="experience-item">
+            <div class="job-header">
+                <span>Technicien Support & Infra / Coordinateur</span>
+                <span class="date">Depuis Mars 2024</span>
+            </div>
+            <div class="company">ARSEAA</div>
+            <div class="job-desc">
+                <ul>
+                    <li><strong>Support & Parc :</strong> Support N1/N2, préparation, déploiement postes & téléphones, gestion des équipements via Clarilog.</li>
+                    <li><strong>Admin Système :</strong> Gestion et supervision via Microsoft 365, déploiement d'applications, conformité Intune.</li>
+                    <li><strong>Coordination :</strong> Gestion tickets (lien RSI), organisation du planning, réunions quotidiennes prestataires.</li>
+                    <li><strong>Projets Réseau :</strong> Configuration switchs, actions de sécurité, extraction de données (migration DUI).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-header">
+                <span>Technicien Support Niveau II</span>
+                <span class="date">Sept. 2022 – Mars 2024</span>
+            </div>
+            <div class="company">CGI</div>
+            <div class="job-desc">
+                <ul>
+                    <li>Résolution d'incidents applicatifs (SQL, Jira).</li>
+                    <li>Analyse de données et gestion de tickets.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-header">
+                <span>Technicien Niveau IV</span>
+                <span class="date">2015 – 2022</span>
+            </div>
+            <div class="company">ALRT (Prestataire SAMU 31)</div>
+            <div class="job-desc">
+                <ul>
+                    <li>Gestion réseaux et dispositifs prudentiels (NOVI).</li>
+                    <li>Configuration routeurs Mikrotik & Wifi.</li>
+                    <li>Maintenance matérielle, électricité, radio-com.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-header">
+                <span>Assistant de régulation médicale</span>
+                <span class="date">2007 – 2014</span>
+            </div>
+            <div class="company">SAMU 31 & ARMEL</div>
+        </div>
+
+        <div class="section-title">Diplômes & Certifications</div>
+        <ul>
+            <li><strong>2025 :</strong> ISKCV1 ITSM, Support (08/09/2025)</li>
+            <li><strong>2021 :</strong> Certificat Télépilote Drone (DGAC)</li>
+            <li><strong>2019 :</strong> Soins d'urgence niveau 2</li>
+            <li><strong>2014 :</strong> Certificat exploitant hospitalier télécom</li>
+            <li><strong>2010 :</strong> Formation électricien d'équipement (AFPA)</li>
+            <li><strong>2000 :</strong> BEP Électronique</li>
+        </ul>
+
+    </div>
+</div>
+
+</body>
+</html>
