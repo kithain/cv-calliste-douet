@@ -19,6 +19,35 @@
             color: var(--text-color);
             font-size: 15px;
         }
+        
+        /* --- STYLE DU BOUTON D'IMPRESSION --- */
+        .print-container {
+            background-color: #f0f0f0;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        .btn-print {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-print:hover {
+            filter: brightness(90%);
+        }
+        .ats-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* STRUCTURE GENERALE */
         .container {
             display: grid;
             grid-template-columns: 28% 72%;
@@ -29,19 +58,8 @@
             background: var(--dark-bg);
             color: white;
             padding: 45px 28px;
-        }
-        .profile-img-placeholder {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: #ccc;
-            margin: 0 auto 25px;
-            border: 4px solid var(--primary-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: #444;
+            -webkit-print-color-adjust: exact; /* Force couleur impression */
+            print-color-adjust: exact;
         }
         .sidebar h2 {
             color: var(--primary-color);
@@ -65,6 +83,10 @@
             margin-top: 15px;
             font-weight: bold;
             color: var(--accent-color);
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
         }
 
         /* Main */
@@ -124,22 +146,31 @@
             margin-bottom: 5px;
         }
 
+        /* RÈGLES D'IMPRESSION */
         @media print {
-            body { -webkit-print-color-adjust: exact; }
+            .print-container { display: none !important; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .container { display: grid; } /* Maintient la colonne */
+            a { text-decoration: none; color: inherit; }
         }
     </style>
 </head>
 <body>
 
+<div class="print-container">
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimer / Sauvegarder en PDF</button>
+    <div class="ats-note">Conseil : Dans la fenêtre qui s'ouvre, choisissez "Enregistrer au format PDF".</div>
+</div>
+
 <div class="container">
     <div class="sidebar">
-        <img src="photo.jpg" alt="Photo de profil" style="width:130px;height:130px;border-radius:50%;border:4px solid var(--primary-color);object-fit:cover;">
+        <img src="photo.jpg" alt="Photo de profil" style="width:130px;height:130px;border-radius:50%;border:4px solid var(--primary-color);object-fit:cover;display:block;margin:0 auto 25px auto;">
 
         <h2>Contact</h2>
         <div>📍 54 rue des Amandiers – 31270 FROUZINS</div>
         <div>📞 06 88 38 73 17</div>
         <div>📧 douetcalliste@gmail.com</div>
-		<div>➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank">LinkedIn</a></div>
+        <div>➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank">LinkedIn</a></div>
 
         <h2>Compétences</h2>
 
@@ -202,8 +233,8 @@
                 <ul>
                     <li><strong>Support & Parc :</strong> Support N1/N2, préparation et déploiement postes & téléphones, gestion de parc via Clarilog.</li>
                     <li><strong>Admin Système :</strong> Gestion et supervision via Microsoft 365, déploiement d'applications, Intune, Gestion AD.</li>
-                    <li><strong>Coordination :</strong> Gestion tickets (lien RSI), organisation du planning, formation et integrations des nouveaux arrivants,réunions quotidiennes prestataires.</li>
-                    <li><strong>Projets et Réseau :</strong> Configuration switchs(Aruba), exports base de donnée pour la migration DUI.</li>
+                    <li><strong>Coordination :</strong> Gestion tickets (lien RSI), organisation du planning, formation et integrations des nouveaux arrivants, réunions quotidiennes prestataires.</li>
+                    <li><strong>Projets et Réseau :</strong> Configuration switchs (Aruba), exports base de donnée pour la migration DUI.</li>
                 </ul>
             </div>
         </div>
@@ -216,12 +247,12 @@
             <div class="company">CGI</div>
             <div class="job-desc">
                 <ul>
-					<li><strong>Team Lead :</strong> Encadrement de l'équipe support N1/N2, coordination de l'activité et gestion des priorités.</li>
-					<li><strong>Formation :</strong> Conception et animation des formations SQL niveau 1 pour les nouveaux arrivants.</li>
+                    <li><strong>Team Lead :</strong> Encadrement de l'équipe support N1/N2, coordination de l'activité et gestion des priorités.</li>
+                    <li><strong>Formation :</strong> Conception et animation des formations SQL niveau 1 pour les nouveaux arrivants.</li>
                     <li>Résolution d'incidents applicatifs (SQL, Jira).</li>
                     <li>Analyse de données et gestion de tickets.</li>
-					<li>Correction de bugs applicatifs sur la base des spécifications fonctionnelles.</li>
-					<li>Rédaction documentation & procédures.</li>
+                    <li>Correction de bugs applicatifs sur la base des spécifications fonctionnelles.</li>
+                    <li>Rédaction documentation & procédures.</li>
                 </ul>
             </div>
         </div>
@@ -234,9 +265,9 @@
             <div class="company">ALRT (Prestataire SAMU 31)</div>
             <div class="job-desc">
                 <ul>
-					<li><strong>Gestion de projet :</strong> Création de véhicules satellitaires.</li>
+                    <li><strong>Gestion de projet :</strong> Création de véhicules satellitaires.</li>
                     <li>Gestion réseaux sur DPS et NOVI.</li>
-                    <li>Configuration routeurs Mikrotik &  AP Wifi.</li>
+                    <li>Configuration routeurs Mikrotik & AP Wifi.</li>
                     <li>Maintenance matérielle, électricité, radio-com.</li>
                 </ul>
             </div>
