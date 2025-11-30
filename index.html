@@ -20,7 +20,7 @@
             font-size: 15px;
         }
         
-        /* --- STYLE DU BOUTON D'IMPRESSION --- */
+        /* --- BOUTON IMPRESSION --- */
         .print-container {
             background-color: #f0f0f0;
             padding: 15px;
@@ -38,27 +38,20 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-        .btn-print:hover {
-            filter: brightness(90%);
-        }
-        .ats-note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
+        .btn-print:hover { filter: brightness(90%); }
+        .ats-note { font-size: 12px; color: #666; margin-top: 5px; }
 
-        /* STRUCTURE GENERALE */
+        /* --- STRUCTURE --- */
         .container {
             display: grid;
             grid-template-columns: 28% 72%;
             min-height: 100vh;
         }
-        /* Sidebar */
         .sidebar {
             background: var(--dark-bg);
             color: white;
             padding: 45px 28px;
-            -webkit-print-color-adjust: exact; /* Force couleur impression */
+            -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
         .sidebar h2 {
@@ -70,46 +63,16 @@
             border-bottom: 1px solid #444;
             padding-bottom: 6px;
         }
-        .sidebar ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-        .sidebar li {
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .skill-category {
-            margin-top: 15px;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-        }
+        .sidebar ul { list-style: none; padding-left: 0; margin: 0; }
+        .sidebar li { margin-bottom: 8px; font-size: 14px; }
+        .skill-category { margin-top: 15px; font-weight: bold; color: var(--accent-color); }
+        .sidebar a { color: white; text-decoration: none; }
 
-        /* Main */
-        .main-content {
-            padding: 50px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 40px;
-            text-transform: uppercase;
-            color: var(--dark-bg);
-        }
-        .header h2 {
-            margin-top: 5px;
-            font-size: 22px;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        p.leading-text {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-top: 25px;
-        }
+        .main-content { padding: 50px; }
+        .header h1 { margin: 0; font-size: 40px; text-transform: uppercase; color: var(--dark-bg); }
+        .header h2 { margin-top: 5px; font-size: 22px; color: var(--primary-color); font-weight: 500; }
+        p.leading-text { font-size: 16px; line-height: 1.6; margin-top: 25px; }
+        
         .section-title {
             margin-top: 35px;
             font-size: 20px;
@@ -119,38 +82,38 @@
             border-bottom: 3px solid var(--primary-color);
             padding-bottom: 6px;
             margin-bottom: 22px;
+            /* Evite qu'un titre soit seul en bas de page */
+            break-after: avoid; 
+            page-break-after: avoid;
         }
+        
         .experience-item {
             margin-bottom: 25px;
+            /* Evite de couper une expérience au milieu */
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 17px;
-        }
-        .company {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .date {
-            color: #777;
-            font-size: 14px;
-        }
-        .job-desc ul {
-            margin: 6px 0 0;
-            padding-left: 22px;
-        }
-        .job-desc li {
-            margin-bottom: 5px;
+        
+        .job-header { display: flex; justify-content: space-between; font-weight: bold; font-size: 17px; }
+        .company { color: var(--primary-color); font-weight: bold; font-size: 15px; }
+        .date { color: #777; font-size: 14px; }
+        .job-desc ul { margin: 6px 0 0; padding-left: 22px; }
+        .job-desc li { margin-bottom: 5px; }
+
+        /* --- REGLES SAUT DE PAGE MANUEL --- */
+        .force-break {
+            break-before: page;       /* Standard moderne */
+            page-break-before: always; /* Ancien standard */
+            display: block;
+            height: 1px;
+            width: 100%;
+            margin: 0;
         }
 
-        /* RÈGLES D'IMPRESSION */
         @media print {
             .print-container { display: none !important; }
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .container { display: grid; } /* Maintient la colonne */
+            .container { display: grid; }
             a { text-decoration: none; color: inherit; }
         }
     </style>
@@ -173,7 +136,6 @@
         <div>➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank">LinkedIn</a></div>
 
         <h2>Compétences</h2>
-
         <div class="skill-category">Administration & Systèmes</div>
         <ul>
             <li>Microsoft 365 (Intune, Compliance)</li>
@@ -280,6 +242,8 @@
             </div>
             <div class="company">SAMU 31 & ARMEL</div>
         </div>
+
+        <div class="force-break"></div>
 
         <div class="section-title">Diplômes & Certifications</div>
         <ul>
