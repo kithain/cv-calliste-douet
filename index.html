@@ -15,42 +15,37 @@
 
         /* --- REGLAGES DE BASE --- */
         body {
-            margin: 0; 
+            margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #fff; /*blanc */
+            background: #fff; /* blanc */
             color: var(--text-color);
-            font-size: 15px; /* Taille confortable pour la lecture sur écran */
+            font-size: 15px;
         }
 
-        /* Je coupe l'écran en deux colonnes : 
-           - 28% pour la barre latérale (gauche)
-           - 72% pour le contenu principal (droite) */
         .container {
             display: grid;
             grid-template-columns: 28% 72%;
-            min-height: 100vh; /* Prend toute la hauteur de l'écran minimum */
+            min-height: 100vh;
         }
 
         /* --- BARRE LATERALE (GAUCHE) --- */
         .sidebar {
             background: var(--dark-bg);
-            color: white; /* Texte en blanc pour le contraste */
-            padding: 45px 28px; /* Un peu d'air autour du texte */
+            color: white;
+            padding: 45px 28px;
         }
 
         /* Ma photo de profil */
-        .profile-img-placeholder {
+        .profile-img {
             width: 130px;
             height: 130px;
             border-radius: 50%; 
             background: #ccc;
-            margin: 0 auto 25px; 
             border: 4px solid var(--primary-color); 
             display: flex;
-            justify-content: center;
-            align-items: center;
             font-weight: bold;
             color: #444;
+            object-fit: cover; 
         }
 
         /* Les titres dans la colonne de gauche (Contact, Compétences...) */
@@ -60,23 +55,34 @@
             margin-top: 30px;
             margin-bottom: 10px;
             text-transform: uppercase;
-            border-bottom: 1px solid #444; /* La petite ligne grise sous le titre */
+            border-bottom: 1px solid #444;
             padding-bottom: 6px;
         }
+        
+        /* Les informations de contact, utilisent une liste sémantique */
+        .contact-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
 
-        /* Liste sans puces */
-        .sidebar ul {
+        .sidebar ul { /* Cible toutes les listes de la sidebar */
             list-style: none;
             padding-left: 0;
             margin: 0;
         }
 
         .sidebar li {
-            margin-bottom: 8px; /* Espace entre chaque item */
+            margin-bottom: 8px;
             font-size: 14px;
         }
 
-        /* Les sous-catégories de compétences (Réseaux, Logiciels...) */
+        /* Correction appliquée : Style pour tous les liens dans la sidebar */
+        .sidebar a { 
+            color: white; 
+            text-decoration: none;
+        }
+
         .skill-category {
             margin-top: 15px;
             font-weight: bold;
@@ -85,10 +91,9 @@
 
         /* --- CONTENU PRINCIPAL (DROITE) --- */
         .main-content {
-            padding: 50px; /* Beaucoup d'espace pour que ça respire */
+            padding: 50px;
         }
 
-        /* Nom et Prénom */
         .header h1 {
             margin: 0;
             font-size: 40px;
@@ -96,7 +101,6 @@
             color: var(--dark-bg);
         }
 
-        /* poste actuel */
         .header h2 {
             margin-top: 5px;
             font-size: 22px;
@@ -104,21 +108,19 @@
             font-weight: 500;
         }
 
-        /* Le texte d'intro */
         p.leading-text {
             font-size: 16px;
-            line-height: 1.6; /* Interligne plus grand pour faciliter la lecture */
+            line-height: 1.6;
             margin-top: 25px;
         }
 
-        /* Les titres de sections (Expériences, Diplômes...) */
         .section-title {
             margin-top: 35px;
             font-size: 20px;
             color: #000;
             text-transform: uppercase;
             font-weight: bold;
-            border-bottom: 3px solid var(--primary-color); /* La grosse ligne orange soulignée */
+            border-bottom: 3px solid var(--primary-color);
             padding-bottom: 6px;
             margin-bottom: 22px;
         }
@@ -128,10 +130,9 @@
             margin-bottom: 25px;
         }
 
-        /* La ligne avec le Titre du poste et la Date */
         .job-header {
             display: flex;
-            justify-content: space-between; /* Pousse la date tout à droite */
+            justify-content: space-between;
             font-weight: bold;
             font-size: 17px;
         }
@@ -143,11 +144,10 @@
         }
 
         .date {
-            color: #000; 
+            color: #000;
             font-size: 14px;
         }
 
-        /* Les puces des tâches effectuées */
         .job-desc ul {
             margin: 6px 0 0;
             padding-left: 22px;
@@ -156,12 +156,19 @@
             margin-bottom: 5px;
         }
 
+        /* Liste des diplômes dans le contenu principal */
+        .main-content > ul {
+            list-style: disc; /* Remet les puces pour les diplômes */
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
         /* --- LE BOUTON D'IMPRESSION --- */
         .print-btn-container {
-            position: fixed; /* Reste fixe quand on scrolle */
+            position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1000; /* au-dessus de tout le reste */
+            z-index: 1000;
         }
 
         .print-btn {
@@ -169,15 +176,14 @@
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 50px; 
+            border-radius: 50px;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer; /* Change en main au survol */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            transition: background 0.3s, transform 0.2s; 
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background 0.3s, transform 0.2s;
         }
 
-        /* Effet quand on passe la souris dessus */
         .print-btn:hover {
             background-color: #e55a2b;
             transform: translateY(-2px);
@@ -194,36 +200,41 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 background: white;
-                font-size: 15px; /* ON REDUIT TOUT ! 15px c'est trop gros pour du papier A4 */
+                font-size: 12pt; /* Taille standard pour l'impression */
+                color: #000;
             }
 
             .container {
                 display: grid;
                 grid-template-columns: 28% 72%;
-                height: 100vh; /* Force la hauteur à faire exactement une page */
-                min-height: auto;
-                overflow: hidden; /* Coupe ce qui dépasse (au cas où) */
+                min-height: 100vh;
+                overflow: hidden;
             }
 
             /* --- ELEMENT A CACHER A L'IMPRESSION --- */
-            /* On cache le bouton (inutile sur papier) et les éléments marqués "no-print" (LinkedIn) */
-            .print-btn-container, 
+            .print-btn-container,
             .no-print {
-                display: none !important;
+                display: none;
             }
 
             /* --- MODE COMPACT : SIDEBAR --- */
             .sidebar {
-                padding: 20px 15px !important; /* On réduit drastiquement les marges internes */
-                height: 100%;
+                padding: 20px 15px;
+                
             }
-            
-            /* On réduit la photo pour gagner de la place en hauteur */
-            .sidebar img {
-                width: 90px !important;
-                height: 90px !important;
-                margin-bottom: 15px !important;
+
+            /* Utilisation du sélecteur de classe pour la photo */
+            .profile-img {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 15px;
             }
+            .profile-img-placeholder { /* S'il n'y a pas de photo */
+                width: 90px;
+                height: 90px;
+                margin-bottom: 15px;
+            }
+
 
             /* On tasse les titres */
             .sidebar h2 {
@@ -239,7 +250,7 @@
                 font-size: 10px;
                 line-height: 1.2;
             }
-            
+
             .skill-category {
                 margin-top: 10px;
                 font-size: 11px;
@@ -248,16 +259,16 @@
 
             /* --- MODE COMPACT : CONTENU PRINCIPAL --- */
             .main-content {
-                padding: 25px 30px ; 
+                padding: 25px 30px;
             }
 
             .header h1 {
-                font-size: 30px; 
+                font-size: 30px;
                 margin-bottom: 0;
             }
-            
+
             .header h2 {
-                font-size: 22px; 
+                font-size: 22px;
                 margin-top: 2px;
             }
 
@@ -276,10 +287,9 @@
                 padding-bottom: 2px;
             }
 
-            /* Empêche de couper une expérience en deux entre deux pages */
             .experience-item {
                 margin-bottom: 10px;
-                page-break-inside: avoid; 
+                page-break-inside: avoid;
             }
 
             .job-header {
@@ -324,14 +334,16 @@
 
 <div class="container">
     <div class="sidebar">
-        <img src="photo.jpg" alt="Photo de profil" style="width:130px;height:130px;border-radius:50%;border:4px solid var(--primary-color);object-fit:cover;">
+        <img src="photo.jpg" alt="Photo de profil de Calliste DOUET" class="profile-img">
 
         <h2>Contact</h2>
-        <div>📍 54 rue des Amandiers – 31270 FROUZINS</div>
-        <div>📞 06 88 38 73 17</div>
-        <div>📧 douetcalliste@gmail.com</div>
-        
-        <div class="no-print">➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank" style="color:white;">LinkedIn</a></div>
+        <ul class="contact-list">
+            <li>📍 54 rue des Amandiers – 31270 FROUZINS</li>
+            <li>📞 06 88 38 73 17</li>
+            <li>📧 <a href="mailto:douetcalliste@gmail.com">douetcalliste@gmail.com</a></li> 
+
+            <li class="no-print">➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank">LinkedIn</a></li>
+        </ul>
 
         <h2>Compétences</h2>
 
@@ -373,91 +385,122 @@
     </div>
 
     <div class="main-content">
-        <div class="header">
-            <h1>Calliste DOUET</h1>
+        <header class="header"> <h1>Calliste DOUET</h1>
             <h2>Technicien Systèmes & Réseaux – Support Informatique</h2>
-        </div>
+        </header>
 
         <p class="leading-text">
             Technicien polyvalent avec plus de 9 ans d'expérience en support, réseaux et gestion de parc. Compétent en coordination d'équipe, déploiement d'infrastructures et administration Microsoft 365.
         </p>
 
-        <div class="section-title">Expériences Professionnelles</div>
+        <section> <h3 class="section-title">Expériences Professionnelles</h3>
 
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Technicien Support & Infra / Coordinateur</span>
-                <span class="date">Depuis Mars 2024</span>
+            <div class="experience-item">
+                <div class="job-header">
+                    <span>Technicien Support & Infra / Coordinateur</span>
+                    <span class="date"><time datetime="2024-03">Depuis Mars 2024</time></span> </div>
+                <div class="company">ARSEAA</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Support & Parc :</strong> Support N1/N2, préparation et déploiement postes & téléphones, gestion de parc via Clarilog.</li>
+                        <li><strong>Admin Système :</strong> Gestion et supervision via Microsoft 365, déploiement d'applications, Intune, Gestion AD.</li>
+                        <li><strong>Coordination :</strong> Gestion tickets (lien RSI), organisation du planning, formation et integrations des nouveaux arrivants, réunions quotidiennes prestataires.</li>
+                        <li><strong>Projets et Réseau :</strong> Configuration switchs(Aruba), exports base de donnée pour la migration DUI.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="company">ARSEAA</div>
-            <div class="job-desc">
-                <ul>
-                    <li><strong>Support & Parc :</strong> Support N1/N2, préparation et déploiement postes & téléphones, gestion de parc via Clarilog.</li>
-                    <li><strong>Admin Système :</strong> Gestion et supervision via Microsoft 365, déploiement d'applications, Intune, Gestion AD.</li>
-                    <li><strong>Coordination :</strong> Gestion tickets (lien RSI), organisation du planning, formation et integrations des nouveaux arrivants,réunions quotidiennes prestataires.</li>
-                    <li><strong>Projets et Réseau :</strong> Configuration switchs(Aruba), exports base de donnée pour la migration DUI.</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Technicien Support Niveau II</span>
-                <span class="date">Sept. 2022 – Mars 2024</span>
+            <div class="experience-item">
+                <div class="job-header">
+                    <span>Technicien Support Niveau II</span>
+                    <span class="date"><time datetime="2022-09">Sept. 2022</time> – <time datetime="2024-03">Mars 2024</time></span>
+                </div>
+                <div class="company">CGI</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Team Lead :</strong> Encadrement de l'équipe support N1/N2, coordination de l'activité et gestion des priorités.</li>
+                        <li><strong>Formation :</strong> Conception et animation des formations SQL niveau 1 pour les nouveaux arrivants.</li>
+                        <li>Résolution d'incidents applicatifs (SQL, Jira).</li>
+                        <li>Analyse de données et gestion de tickets.</li>
+                        <li>Correction de bugs applicatifs sur la base des spécifications fonctionnelles.</li>
+                        <li>Rédaction documentation & procédures.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="company">CGI</div>
-            <div class="job-desc">
-                <ul>
-                    <li><strong>Team Lead :</strong> Encadrement de l'équipe support N1/N2, coordination de l'activité et gestion des priorités.</li>
-                    <li><strong>Formation :</strong> Conception et animation des formations SQL niveau 1 pour les nouveaux arrivants.</li>
-                    <li>Résolution d'incidents applicatifs (SQL, Jira).</li>
-                    <li>Analyse de données et gestion de tickets.</li>
-                    <li>Correction de bugs applicatifs sur la base des spécifications fonctionnelles.</li>
-                    <li>Rédaction documentation & procédures.</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Technicien Niveau IV</span>
-                <span class="date">2015 – 2022</span>
+            <div class="experience-item">
+                <div class="job-header">
+                    <span>Technicien Niveau IV</span>
+                    <span class="date"><time datetime="2015">2015</time> – <time datetime="2022">2022</time></span>
+                </div>
+                <div class="company">ALRT (Prestataire SAMU 31)</div>
+                <div class="job-desc">
+                    <ul>
+                        <li><strong>Gestion de projet :</strong> Création de véhicules satellitaires.</li>
+                        <li>Gestion réseaux sur DPS et NOVI.</li>
+                        <li>Configuration routeurs Mikrotik & AP Wifi.</li>
+                        <li>Maintenance matérielle, électricité, radio-com.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="company">ALRT (Prestataire SAMU 31)</div>
-            <div class="job-desc">
-                <ul>
-                    <li><strong>Gestion de projet :</strong> Création de véhicules satellitaires.</li>
-                    <li>Gestion réseaux sur DPS et NOVI.</li>
-                    <li>Configuration routeurs Mikrotik &  AP Wifi.</li>
-                    <li>Maintenance matérielle, électricité, radio-com.</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Assistant de régulation médicale</span>
-                <span class="date">2007 – 2014</span>
+            <div class="experience-item">
+				<div class="job-header">
+					<span>Assistant de Régulation Médicale (ARM)</span>
+					<span class="date"><time datetime="2007">2007</time> – <time datetime="2014">2014</time></span>
+				</div>
+			<div class="company">SAMU 31 & ARMEL</div>
+			<div class="job-desc">
+					<ul>
+						<li>Régulation: Accueil et gestion des appels, évaluation du degré de gravité et déclenchement des moyens appropriés (MMG/SAMU).</li>
+						<li><strong>Support Utilisateur N1 (Interne) :</strong> Assistance et dépannage de premier niveau des postes de travail et des logiciels de régulation pour les médecins et les collègues.</li>
+						<li><strong>Environnement Critique :</strong> Gestion du stress, réactivité.</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="experience-item">
+                <div class="job-header">
+                    <span>Missions d'Intérim </span>
+                    <span class="date"><time datetime="2001">2001</time> – <time datetime="2007">2007</time></span>
+                </div>
+                <div class="company">Diverses entreprises (via agences d'intérim)</div>
+                <div class="job-desc">
+                    <ul>
+                        <li>Polyvalence Opérationnelle : Réalisation de missions dans différents secteurs.</li>
+                        <li>Adaptabilité et Autonomie : Capacité rapide à s'intégrer, à maîtriser de nouveaux processus et outils de travail.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="company">SAMU 31 & ARMEL</div>
-        </div>
+        </section>
 
-        <div class="section-title">Diplômes & Certifications</div>
-        <ul>
-            <li><strong>2025 :</strong> ISKCV1 ITSM, Support</li>
-            <li><strong>2021 :</strong> Certificat Télépilote Drone (DGAC)</li>
-            <li><strong>2019 :</strong> Soins d'urgence niveau 2</li>
-            <li><strong>2014 :</strong> Certificat exploitant hospitalier télécom</li>
-            <li><strong>2010 :</strong> Formation électricien d'équipement (AFPA)</li>
-            <li><strong>2000 :</strong> BEP Électronique</li>
-        </ul>
+        <section> <h3 class="section-title">Diplômes & Certifications</h3>
+            <ul>
+                <li><strong><time datetime="2025">2025</time> :</strong> ISKCV1 ITSM, Support</li>
+                <li><strong><time datetime="2021">2021</time> :</strong> Certificat Télépilote Drone (DGAC)</li>
+                <li><strong><time datetime="2019">2019</time> :</strong> Soins d'urgence niveau 2</li>
+                <li><strong><time datetime="2014">2014</time> :</strong> Certificat exploitant hospitalier télécom</li>
+                <li><strong><time datetime="2010">2010</time> :</strong> Formation électricien d'équipement (AFPA)</li>
+                <li><strong><time datetime="2000">2000</time> :</strong> BEP Électronique</li>
+            </ul>
+        </section>
 
     </div>
 </div>
 
 <div class="print-btn-container">
-    <button class="print-btn" onclick="window.print()">🖨️ Imprimer en PDF</button>
-</div>
+    <button class="print-btn">🖨️ Imprimer en PDF</button> </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const printButton = document.querySelector('.print-btn');
+        if (printButton) {
+            printButton.addEventListener('click', () => {
+                window.print();
+            });
+        }
+    });
+</script>
 
 </body>
 </html>
