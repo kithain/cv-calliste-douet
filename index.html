@@ -10,139 +10,119 @@
             --accent-color: #ff9e58;
             --dark-bg: #1f2a36;
             --text-color: #333;
-            --light-bg: #f7f7f7;
+            --sidebar-width: 260px; /* Largeur fixe pour stabilité */
         }
+        
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #fff;
             color: var(--text-color);
-            font-size: 14px; /* Légère réduction pour tout faire tenir proprement */
-            line-height: 1.4;
+            font-size: 14px;
+            line-height: 1.5;
+            /* C'est CE dégradé qui assure la couleur sur la page 2 */
+            background: linear-gradient(to right, var(--dark-bg) 260px, white 260px);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
-        
-        /* --- BOUTON IMPRESSION --- */
-        .print-container {
-            background-color: #f0f0f0;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ccc;
+
+        /* BOUTON (Invisible à l'impression) */
+        .no-print {
+            background: #f0f0f0; padding: 10px; text-align: center; border-bottom: 1px solid #999;
         }
         .btn-print {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .ats-note { font-size: 12px; color: #666; margin-top: 5px; }
-
-        /* --- STRUCTURE --- */
-        .container {
-            display: grid;
-            grid-template-columns: 28% 72%;
-            min-height: 100vh;
-            /* Astuce pour que la couleur de gauche continue sur toutes les pages PDF */
-            background: linear-gradient(to right, var(--dark-bg) 28%, white 28%);
+            padding: 10px 20px; background: var(--primary-color); color: white; border: none; cursor: pointer; font-weight: bold; border-radius: 4px;
         }
 
-        /* COLONNE GAUCHE */
+        /* --- LAYOUT ROBUSTE (FLOAT) --- */
         .sidebar {
-            /* On enlève le background ici car il est géré par le container */
-            color: white;
+            float: left;
+            width: 260px;
             padding: 40px 25px;
+            color: white;
         }
-        .sidebar h2 {
-            color: var(--primary-color);
-            font-size: 17px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #444;
-            padding-bottom: 5px;
-        }
-        .sidebar ul { list-style: none; padding-left: 0; margin: 0; }
-        .sidebar li { margin-bottom: 6px; font-size: 13.5px; }
-        .skill-category { margin-top: 15px; font-weight: bold; color: var(--accent-color); }
-        .sidebar a { color: white; text-decoration: none; border-bottom: 1px dotted #ccc; }
 
-        /* COLONNE DROITE */
-        .main-content { padding: 40px 40px; } /* Marges réduites */
-        
-        .header h1 { margin: 0; font-size: 36px; text-transform: uppercase; color: var(--dark-bg); line-height: 1.1; }
-        .header h2 { margin-top: 5px; font-size: 20px; color: var(--primary-color); font-weight: 500; }
-        
-        p.leading-text { font-size: 15px; margin-top: 20px; margin-bottom: 10px; text-align: justify; }
-        
+        .main-content {
+            margin-left: 260px; /* Pousse le contenu à droite */
+            padding: 40px 40px;
+        }
+
+        /* --- STYLES --- */
+        /* Sidebar */
+        .sidebar img { margin: 0 auto 20px; display: block; border: 3px solid var(--primary-color); background: #ccc; }
+        .sidebar h2 { color: var(--primary-color); font-size: 16px; border-bottom: 1px solid #555; margin-top: 25px; margin-bottom: 10px; text-transform: uppercase; padding-bottom: 5px; }
+        .sidebar ul { padding: 0; list-style: none; margin: 0; }
+        .sidebar li { margin-bottom: 5px; font-size: 13px; }
+        .skill-category { color: var(--accent-color); font-weight: bold; margin-top: 15px; margin-bottom: 2px; }
+        .sidebar a { color: white; text-decoration: none; border-bottom: 1px dotted #888; }
+
+        /* Main */
+        .header h1 { margin: 0; font-size: 34px; text-transform: uppercase; line-height: 1.1; color: var(--dark-bg); }
+        .header h2 { margin: 5px 0 0; font-size: 18px; color: var(--primary-color); font-weight: 500; }
+        .intro { margin-top: 20px; text-align: justify; font-size: 14px; }
+
         .section-title {
             margin-top: 25px;
-            font-size: 19px;
+            border-bottom: 2px solid var(--primary-color);
             color: var(--dark-bg);
-            text-transform: uppercase;
+            font-size: 18px;
             font-weight: bold;
-            border-bottom: 3px solid var(--primary-color);
+            text-transform: uppercase;
             padding-bottom: 5px;
             margin-bottom: 15px;
-            break-after: avoid; 
+            break-after: avoid;
         }
-        
-        .experience-item {
-            margin-bottom: 20px;
-            break-inside: avoid; /* Évite de couper un bloc en deux */
-        }
-        
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; font-weight: bold; font-size: 16px; }
-        .company { color: var(--primary-color); font-weight: bold; font-size: 14px; margin-bottom: 5px; }
-        .date { color: #555; font-size: 13px; font-style: italic; }
-        .job-desc ul { margin: 5px 0 0; padding-left: 18px; }
-        .job-desc li { margin-bottom: 3px; }
 
-        /* --- SAUTS DE PAGE --- */
-        .force-break {
-            break-before: page;
+        .job-block { margin-bottom: 20px; break-inside: avoid; }
+        .job-head { display: flex; justify-content: space-between; font-weight: bold; font-size: 15px; }
+        .company { color: var(--primary-color); font-weight: bold; }
+        .date { color: #666; font-size: 13px; font-style: italic; }
+        .job-desc ul { margin: 5px 0 0; padding-left: 18px; }
+        .job-desc li { margin-bottom: 2px; }
+
+        /* --- SAUT DE PAGE --- */
+        .page-break {
+            clear: both;
             page-break-before: always;
+            height: 1px;
             display: block;
-            height: 0;
-            margin: 0;
-            border: none;
         }
+
+        /* NETTOYAGE FLOTTAISON (Clearfix) */
+        .clearfix::after { content: ""; display: table; clear: both; }
 
         @media print {
-            .print-container { display: none !important; }
-            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .container { display: block; } /* Hack pour éviter les bugs de grid multipages */
-            .sidebar { width: 28%; float: left; box-sizing: border-box; height: 100%; min-height: 100vh; }
-            .main-content { width: 72%; float: right; box-sizing: border-box; }
-            a { text-decoration: none; color: inherit; }
-            /* Force les marges PDF à 0 pour utiliser tout le papier */
+            .no-print { display: none; }
+            body { -webkit-print-color-adjust: exact; margin: 0; }
             @page { margin: 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="print-container">
-    <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF</button>
-    <div class="ats-note">Sélectionnez "Enregistrer au format PDF" • Marges : "Aucune" ou "Par défaut"</div>
+<div class="no-print">
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimer (Choisir PDF + Marges: Aucune)</button>
+    <div style="font-size:12px; margin-top:5px;">Important : Dans les options d'impression, mettez les marges sur <b>"Aucune"</b>.</div>
 </div>
 
-<div class="container">
+<div class="clearfix">
+    
     <div class="sidebar">
-        <img src="photo.jpg" alt="Photo" style="width:120px;height:120px;border-radius:50%;border:4px solid var(--primary-color);object-fit:cover;display:block;margin:0 auto 20px auto;background:#ccc;">
+        <img src="photo.jpg" alt="Photo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
 
         <h2>Contact</h2>
         <div>📍 54 rue des Amandiers<br>31270 FROUZINS</div>
-        <div style="margin-top:8px">📞 06 88 38 73 17</div>
+        <div style="margin-top:5px">📞 06 88 38 73 17</div>
         <div>📧 douetcalliste@gmail.com</div>
-        <div style="margin-top:8px">➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239" target="_blank">Profil LinkedIn</a></div>
+        <div style="margin-top:5px">➡️ <a href="https://www.linkedin.com/in/calliste-douet-00ba24239">LinkedIn</a></div>
 
         <h2>Compétences</h2>
         <div class="skill-category">Admin & Systèmes</div>
         <ul>
-            <li>Microsoft 365 (Intune, Compliance)</li>
+            <li>Microsoft 365 (Intune)</li>
             <li>Gestion de parc (Clarilog)</li>
             <li>Windows 10/11 & Server</li>
             <li>SQL – jQuery</li>
@@ -151,62 +131,62 @@
         <div class="skill-category">Réseaux</div>
         <ul>
             <li>Routeurs Mikrotik (Winbox)</li>
-            <li>Switching (Aruba), VLAN, Wifi</li>
-            <li>Téléphonie IP</li>
+            <li>Switching (Aruba) & Wifi</li>
+            <li>Téléphonie IP / Satellitaire</li>
         </ul>
 
         <div class="skill-category">Logiciels & Création</div>
         <ul>
             <li>Jira – Confluence</li>
-            <li>Suite Adobe (Ps, Ai, Pr)</li>
+            <li>Adobe (Ps, Ai, Pr)</li>
             <li>Fusion 360 – Blender</li>
         </ul>
 
         <h2>Langues</h2>
         <ul>
-            <li>Anglais Technique : Maîtrise</li>
-            <li>Anglais Général : Intermédiaire</li>
+            <li>Anglais Tech : Maîtrise</li>
+            <li>Anglais : Intermédiaire</li>
         </ul>
 
         <h2>Savoir-être</h2>
         <ul>
-            <li>Autonome – Autodidacte</li>
-            <li>Dynamique – Curieux</li>
+            <li>Autonome & Autodidacte</li>
+            <li>Dynamique & Curieux</li>
             <li>Sens du service</li>
-            <li>Coordination d'équipe</li>
         </ul>
     </div>
 
     <div class="main-content">
+        
         <div class="header">
             <h1>Calliste DOUET</h1>
             <h2>Technicien Systèmes & Réseaux – Support</h2>
         </div>
 
-        <p class="leading-text">
-            Technicien polyvalent avec plus de 9 ans d'expérience. Expert en support utilisateur et déploiement réseau, j'ai récemment évolué vers des missions de coordination, de gestion de parc et d'administration système (M365).
+        <p class="intro">
+            Technicien polyvalent avec plus de 9 ans d'expérience en support, réseaux et gestion de parc. Compétent en coordination d'équipe, déploiement d'infrastructures et administration Microsoft 365.
         </p>
 
         <div class="section-title">Expériences Professionnelles</div>
 
-        <div class="experience-item">
-            <div class="job-header">
+        <div class="job-block">
+            <div class="job-head">
                 <span>Technicien Support & Infra / Coordinateur</span>
                 <span class="date">Depuis Mars 2024</span>
             </div>
             <div class="company">ARSEAA</div>
             <div class="job-desc">
                 <ul>
-                    <li><strong>Support & Parc :</strong> Support N1/N2 global, préparation/déploiement postes & mobiles. Gestion de parc (Clarilog).</li>
-                    <li><strong>Admin Système :</strong> Supervision via Microsoft 365, déploiement d'applis, conformité Intune.</li>
-                    <li><strong>Coordination :</strong> "Tour de contrôle" des tickets (lien RSI), gestion planning équipe, animation réunions prestataires.</li>
-                    <li><strong>Projets :</strong> Config switchs (Aruba), sécurité, extraction données pour migration DUI.</li>
+                    <li><strong>Support & Parc :</strong> Support N1/N2 global, déploiement postes/mobiles. Gestion de parc (Clarilog).</li>
+                    <li><strong>Admin Système :</strong> Supervision Microsoft 365, déploiement d'applis, conformité Intune.</li>
+                    <li><strong>Coordination :</strong> "Tour de contrôle" tickets (lien RSI), planning équipe, animation réunions prestataires.</li>
+                    <li><strong>Projets :</strong> Config switchs (Aruba), sécurité, extraction données migration DUI.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="experience-item">
-            <div class="job-header">
+        <div class="job-block">
+            <div class="job-head">
                 <span>Technicien Support Niveau II</span>
                 <span class="date">Sept. 2022 – Mars 2024</span>
             </div>
@@ -214,53 +194,10 @@
             <div class="job-desc">
                 <ul>
                     <li><strong>Team Lead :</strong> Encadrement équipe N1/N2, coordination activité.</li>
-                    <li><strong>Formation :</strong> Animation formations SQL niveau 1.</li>
-                    <li>Résolution d'incidents complexes (Requêtes SQL, Jira).</li>
-                    <li>Analyse de données, ticketing et documentation.</li>
+                    <li><strong>Formation :</strong> Animation formations SQL niv.1.</li>
+                    <li>Résolution d'incidents complexes (SQL, Jira) et analyse de données.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="force-break"></div>
-
-        <div class="section-title" style="margin-top:0;">Expériences (Suite)</div>
-
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Technicien Niveau IV</span>
-                <span class="date">2015 – 2022</span>
-            </div>
-            <div class="company">ALRT (Prestataire SAMU 31)</div>
-            <div class="job-desc">
-                <ul>
-                    <li><strong>Gestion de projet :</strong> Conception de véhicules satellitaires.</li>
-                    <li>Gestion réseaux sur dispositifs d'urgence (NOVI).</li>
-                    <li>Configuration routeurs Mikrotik & AP Wifi.</li>
-                    <li>Maintenance matérielle, électricité, radio-com.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="experience-item">
-            <div class="job-header">
-                <span>Assistant de régulation médicale</span>
-                <span class="date">2007 – 2014</span>
-            </div>
-            <div class="company">SAMU 31 & ARMEL</div>
-        </div>
-
-        <div class="section-title">Diplômes & Certifications</div>
-        <ul style="margin-top:10px; padding-left:20px; line-height:1.6;">
-            <li><strong>2025 :</strong> ISKCV1 ITSM, Support</li>
-            <li><strong>2021 :</strong> Certificat Télépilote Drone (DGAC)</li>
-            <li><strong>2019 :</strong> Soins d'urgence niveau 2</li>
-            <li><strong>2014 :</strong> Certificat exploitant hospitalier télécom</li>
-            <li><strong>2010 :</strong> Formation électricien d'équipement (AFPA)</li>
-            <li><strong>2000 :</strong> BEP Électronique</li>
-        </ul>
-
-    </div>
-</div>
-
-</body>
-</html>
+        <div class="page-break"></div>
