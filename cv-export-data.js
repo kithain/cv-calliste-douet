@@ -40,7 +40,7 @@ function getCvExportData(source = document) {
         } else if (include && node.classList.contains('skill-category')) {
             add('subheading', text(node));
         } else if (include && node.tagName === 'UL') {
-            add('paragraph', [...node.querySelectorAll('li')].map(text).join(' ; '));
+            add('paragraph', [...node.querySelectorAll('li')].map(text).join(', '));
         }
     }
     return { name, blocks };
