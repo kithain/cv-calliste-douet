@@ -158,6 +158,11 @@ p.leading-text {
 
 /* --- LE BOUTON D'IMPRESSION --- */
 .print-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: calc(100% - 40px);
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -180,6 +185,26 @@ p.leading-text {
 .print-btn:hover {
     background-color: #e55a2b;
     transform: translateY(-2px);
+}
+
+.word-btn { background-color: var(--dark-bg); }
+.word-btn:hover { background-color: #34485c; }
+.ats-pdf-btn { background-color: #216147; }
+.ats-pdf-btn:hover { background-color: #174732; }
+.print-btn:focus-visible { outline: 3px solid #000; outline-offset: 3px; }
+.print-btn:disabled { cursor: wait; opacity: 0.7; }
+.export-status:not(:empty) {
+    flex-basis: 100%;
+    padding: 8px;
+    background: white;
+    color: #333;
+    text-align: right;
+}
+@media screen {
+    body { padding-bottom: 140px; }
+}
+@media screen and (max-width: 600px) {
+    body { padding-bottom: 240px; }
 }
 
 /* --- CONFIGURATION IMPRESSION ---*/

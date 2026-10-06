@@ -165,8 +165,17 @@
 </div>
 
 <div class="print-btn-container">
-    <button class="print-btn">🖨️ Imprimer en PDF</button> </div>
+    <button class="print-btn layout-pdf-btn" type="button">🖨️ Imprimer en PDF</button>
+    <button class="print-btn ats-pdf-btn" type="button" title="PDF à une colonne avec texte sélectionnable">Télécharger PDF ATS</button>
+    <button class="print-btn word-btn" type="button">Télécharger en Word</button>
+    <span class="export-status" role="status" aria-live="polite"></span>
+</div>
 
+<script src="vendor/docx.js" defer></script>
+<script src="vendor/pdf-lib.min.js" defer></script>
+<script src="cv-export-data.js" defer></script>
+<script src="word-export.js" defer></script>
+<script src="pdf-export.js" defer></script>
 <script src="script.js"></script>
 </body>
 </html>
